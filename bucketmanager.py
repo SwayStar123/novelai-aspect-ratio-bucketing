@@ -96,7 +96,7 @@ class BucketManager:
         for post_id in self.res_map.keys():
             w, h = self.res_map[post_id]
             aspect = float(w)/float(h)
-            bucket_id = np.abs(self.aspects - aspect).argmin()
+            bucket_id = np.abs(np.arctan(self.aspects) - np.arctan(aspect)).argmin()
             if bucket_id not in self.buckets:
                 self.buckets[bucket_id] = []
             error = abs(self.aspects[bucket_id] - aspect)
