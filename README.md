@@ -8,14 +8,14 @@ This repository provides an implementation of aspect ratio bucketing for trainin
 
 One common issue of existing image generation models is that they are very prone to producing images with unnatural crops. This is due to the fact that these models are trained to produce square images. However, most photos and artworks are not square. However, the model can only work on images of the same size at the same time, and during training, it is common practice to operate on multiple training samples at once to optimize the efficiency of the GPUs used. As a compromise, square images are chosen, and during training, only the center of each image is cropped out and then shown to the image generation model as a training example.
 
-![Knight wearing a crown with darkened regions removed by the center crop](knight3.jpg)
-
 For example, humans are often generated without feet or heads, and swords consist of only a blade with a hilt and point outside the frame.
 As we are creating an image generation model to accompany our storytelling experience, it is important that our model is able to produce proper, uncropped characters, and generated knights should not be holding a metallic-looking straight line extending to infinity.
 
 Another issue with training on cropped images is that it can lead to a mismatch between the text and the image.
 
 For example, an image with a `crown` tag will often no longer contain a crown after a center crop is applied and the monarch has been, thereby, decapitated.
+
+![Knight wearing a crown with darkened regions removed by the center crop](knight3.jpg)
 
 We found that using random crops instead of center crops only slightly improves these issues.
 
