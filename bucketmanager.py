@@ -9,7 +9,7 @@ def get_prng(seed):
     return np.random.RandomState(seed)
 
 class BucketManager:
-    def __init__(self, bucket_file, valid_ids=None, max_size=(512,512), divisible=16, step_size=8, min_dim=256, base_res=(512,512), bsz=64, world_size=1, global_rank=0, max_ar_error=4, seed=42, dim_limit=1024, debug=False):
+    def __init__(self, bucket_file, valid_ids=None, max_size=(768,512), divisible=64, step_size=8, min_dim=256, base_res=(512,512), bsz=64, world_size=1, global_rank=0, max_ar_error=4, seed=42, dim_limit=1024, debug=False):
         with open(bucket_file, "r") as fh:
             self.res_map = json.load(fh)
         if valid_ids is not None:
