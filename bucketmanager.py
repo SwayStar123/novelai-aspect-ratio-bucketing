@@ -220,6 +220,10 @@ class BucketManager:
                 assert False, "Chosen bucket ID not found in epoch or leftovers"
 
         if self.debug:
+            print(f"bucket probs: " + ", ".join(map(lambda x: f"{x:.2f}", list(bucket_probs*100))))
+            print(f"chosen id: {chosen_id}")
+            print(f"batch data: {batch_data}")
+            print(f"resolution: {resolution}")
             timer = time.perf_counter() - timer
             print(f"get_batch: {timer:.5f}s")
 
